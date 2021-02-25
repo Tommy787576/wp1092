@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="icon shortcut" href="./images/musical-notes.png">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- my css file -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <main>
+        <div id="player-card">
+            <nav>
+                <div id="nav-icon">
+                    <i class=" fas fa-chevron-down"></i>
+                </div>
+                <div>
+                    <div id="nav-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div id="nav-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div id="nav-icon">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+            </nav>
+            <section id="music-image">
+                <img src="./images/fir.png" alt="image">
+            </section>
+            <section id="player">
+                <div id="music-info">
+                    <p style="text-align: center; color: white">千年之戀</p>
+                    <p style="text-align: center; color: white">fir</p>
+                    <p style="text-align: center; color: white">千年之戀</p>
+                </div>
+                <div id="play-bar">
+                    <input type="range" min="1" max="100" value="40" class="slider" id="myRange"
+                        oninput="showVal(this.value)" onchange="showVal(this.value)">
+                </div>
+                <div id="play-board">
+                    <div id="play-board-third">
+                        <i class="fas fa-random fa-lg"></i>
+                    </div>
+                    <div id="play-board-second">
+                        <i class="fas fa-fast-backward fa-2x"></i>
+                    </div>
+                    <div id="play-board-center">
+                        <i class="far fa-play-circle fa-3x"></i>
+                    </div>
+                    <!-- <i class="far fa-pause-circle"></i> -->
+                    <div id="play-board-second">
+                        <i class="fas fa-fast-forward fa-2x"></i>
+                    </div>
+                    <div id="play-board-third">
+                        <i class="fas fa-redo-alt fa-lg"></i>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
