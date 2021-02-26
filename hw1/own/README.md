@@ -8,7 +8,7 @@ This webpage is able to be viewed at the following link:
 
 ### 2. demo gif
 The following is the demo gif:\
-![](./images/hw1_demo.gif)
+![Imgur](https://i.imgur.com/lc4wm8Z.gif)
 
 
 ### 3. references
