@@ -31,6 +31,10 @@ main::before {
     margin: -10px;
 }
 
+main:hover {
+    box-shadow: rgb(20, 76, 128) 0px 0px 10px 10px;
+}
+
 #player-card {
     width: 300px;
     height: 640px;
@@ -72,7 +76,22 @@ nav div {
 
 /* 1. music information div */
 #music-info {
-    margin: 40px 10px 0px 10px;
+    margin: 40px 10px 25px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#music-info-icon {
+    color: white;
+    margin-top: 5px;
+}
+
+#music-info-box {
+    width: 230pxs;
+}
+
+#music-info-box div {
+    padding-bottom: 2px;
 }
 
 /* 2. play bar */
@@ -83,9 +102,10 @@ nav div {
 }
 
 .slider {
-    width: 80%;
+    width: 90%;
     height: 25px;
-    background: #d3d3d37a;
+    /* background: #d3d3d37a; */
+    background: #d3d3d33f;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;

@@ -8,8 +8,11 @@
     <title>Music Player</title>
     <link rel="icon shortcut" href="./images/musical-notes.png">
 
-    <!-- font awesome -->
+    <!-- Roboto font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <!-- my css file -->
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -38,13 +41,27 @@
             </section>
             <section id="player">
                 <div id="music-info">
-                    <p style="text-align: center; color: white">千年之戀</p>
-                    <p style="text-align: center; color: white">fir</p>
-                    <p style="text-align: center; color: white">千年之戀</p>
+                    <div id="music-info-icon">
+                        <!-- <i class="fas fa-star"></i> -->
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div id="music-info-box">
+                        <div
+                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 24px;">
+                            neverland</div>
+                        <div
+                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 16px;">
+                            fir</div>
+                        <div
+                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 16px;">
+                            neverland</div>
+                    </div>
+                    <div id="music-info-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
                 </div>
                 <div id="play-bar">
-                    <input type="range" min="1" max="100" value="40" class="slider" id="myRange"
-                        oninput="showVal(this.value)" onchange="showVal(this.value)">
+                    <input type="range" min="1" max="100" value="40" class="slider" id="myRange">
                 </div>
                 <div id="play-board">
                     <div id="play-board-third">
