@@ -7,9 +7,8 @@ This webpage is able to be viewed at the following link:
  </a>
 
 ### 2. demo gif
-The following is the demo gif:\
+The following is the demo gif (I use Google Chrome as the browser):\
 ![](./images/hw1_demo_ver2.gif)
-
 
 ### 3. references
 * [Secret 18: 毛玻璃效果](https://ithelp.ithome.com.tw/articles/10208692)
