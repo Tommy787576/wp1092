@@ -7,11 +7,12 @@ This webpage is able to be viewed at the following link:
  </a>
 
 ### 2. demo gif
-The following is the demo gif (I use Google Chrome as the browser):\
-![](./images/hw1_demo_ver2.gif)
+The following is the demo gif:\
+![](./images/hw1_demo_new.gif)
 
 ### 3. references
 * [Secret 18: 毛玻璃效果](https://ithelp.ithome.com.tw/articles/10208692)
 * [Font Awesome](https://fontawesome.com)
 * [CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
+* [21 CSS Range Sliders](https://freefrontend.com/css-range-sliders/)
 * [surge](https://surge.sh/)

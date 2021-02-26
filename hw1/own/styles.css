@@ -136,11 +136,35 @@ nav div {
 
 .slider {
     width: 90%;
-    height: 25px;
+    height: 5px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
     outline: none;
-    opacity: 0.5;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+/* for chrome/safari */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: -407px 0 0 400px white;
+}
+
+/* for firefox */
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: -407px 0 0 400px white;
 }
 
 /* 3. play time */
