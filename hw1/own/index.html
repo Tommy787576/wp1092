@@ -21,7 +21,7 @@
     <main>
         <div id="player-card">
             <nav>
-                <div id="nav-icon">
+                <div id="nav-icon" style="margin-left: 5px;">
                     <i class=" fas fa-chevron-down"></i>
                 </div>
                 <div>
@@ -31,7 +31,7 @@
                     <div id="nav-icon">
                         <i class="fas fa-list-ul"></i>
                     </div>
-                    <div id="nav-icon">
+                    <div id="nav-icon" style="margin-right: 5px;">
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
@@ -41,27 +41,28 @@
             </section>
             <section id="player">
                 <div id="music-info">
-                    <div id="music-info-icon">
-                        <!-- <i class="fas fa-star"></i> -->
-                        <i class="far fa-star"></i>
+                    <div>
+                        <i id="music-info-icon" class="far fa-star"></i>
                     </div>
                     <div id="music-info-box">
-                        <div
-                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 24px;">
-                            neverland</div>
-                        <div
-                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 16px;">
-                            fir</div>
-                        <div
-                            style="text-align: center; color: white; font-family: 'Roboto', sans-serif; font-size: 16px;">
-                            neverland</div>
+                        <div id="animation-title" style="font-size: 24px; text-align: right;">neverland</div>
+                        <div>F.I.R</div>
+                        <div>neverland</div>
                     </div>
-                    <div id="music-info-icon">
-                        <i class="fas fa-plus-circle"></i>
+                    <div>
+                        <i id="music-info-icon" class="fas fa-plus-circle"></i>
                     </div>
                 </div>
                 <div id="play-bar">
                     <input type="range" min="1" max="100" value="40" class="slider" id="myRange">
+                </div>
+                <div id="play-time">
+                    <div>
+                        0:00
+                    </div>
+                    <div>
+                        4:05
+                    </div>
                 </div>
                 <div id="play-board">
                     <div id="play-board-third">
@@ -81,7 +82,6 @@
                         <i class="fas fa-redo-alt fa-lg"></i>
                     </div>
                 </div>
-
             </section>
         </div>
     </main>

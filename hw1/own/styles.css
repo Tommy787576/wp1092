@@ -2,6 +2,7 @@ body {
     margin: 0px;
     min-height: 100vh;
     background-color: rgb(64, 64, 82);
+    /* background-color: #10375c; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,8 +55,15 @@ nav div {
 
 #nav-icon {
     width: 40px;
+    height: 30px;
     padding-top: 10px;
     color: white;
+    border-radius: 20px;
+}
+
+#nav-icon:active {
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 5px 5px;
+    background-color: rgba(255, 255, 255, 0.089);
 }
 
 /* styles for music image */
@@ -84,6 +92,12 @@ nav div {
 #music-info-icon {
     color: white;
     margin-top: 5px;
+    border-radius: 8px;
+}
+
+#music-info-icon:hover {
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 5px 5px;
+    background-color: rgba(255, 255, 255, 0.089);
 }
 
 #music-info-box {
@@ -91,8 +105,27 @@ nav div {
 }
 
 #music-info-box div {
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
     padding-bottom: 2px;
 }
+
+#animation-title {
+    width: 230px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    z-index: -5;
+}
+
+@keyframes example {
+    0%   {left: 0px;}
+    50%  {left: -128px;}
+    100% {left: 0px;}
+  } 
 
 /* 2. play bar */
 #play-bar {
@@ -104,15 +137,28 @@ nav div {
 .slider {
     width: 90%;
     height: 25px;
-    /* background: #d3d3d37a; */
-    background: #d3d3d33f;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.5;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
 
-/* 3. control panel div */
+/* 3. play time */
+#play-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+#play-time div {
+    padding: 0px 15px;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+/* 4. control panel div */
 #play-board {
     display: flex;
     justify-content: center;
@@ -127,17 +173,39 @@ nav div {
 #play-board-center {
     width: 60px;
     height: 60px;
+    border-radius: 30px;
     color: white;
+}
+
+#play-board-center:active {
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 3px 3px;
+    background-color: rgba(255, 255, 255, 0.089);
 }
 
 #play-board-second {
     width: 60px;
     height: 60px;
+    border-radius: 30px;
     color: white;
+}
+
+#play-board-second:active {
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 3px 3px;
+    background-color: rgba(255, 255, 255, 0.089);
 }
 
 #play-board-third {
     width: 40px;
     height: 60px;
-    color: white;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+#play-board-third:hover {
+    color: rgb(255, 255, 255);
+}
+
+#play-board-third:active {
+    box-shadow: rgba(255, 255, 255, 0.233) 0px 0px 3px 3px;
+    background-color: rgba(255, 255, 255, 0.089);
 }
