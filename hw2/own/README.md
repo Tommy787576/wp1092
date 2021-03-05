@@ -1,7 +1,7 @@
 # EE 3035, Web Programming, 109-2
 ## Practice Homework #2: Javascript練習
-### 1. webpage url
-This webpage is able to be viewed at the following link: [http://r09921057_web_programming_hw2.surge.sh/](http://r09921057_web_programming_hw2.surge.sh/)
+### 1. webpage 
+Please download this folder and open index.html, then you can see this webpage.
 
 ### 2. demo gif
 The following is the demo gif:\
