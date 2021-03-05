@@ -82,6 +82,9 @@ body {
 	width: 50rem;
 	height: 30rem;
 	margin-bottom: 1rem;
+	background-image: url('./images/loading.gif');
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 #source {

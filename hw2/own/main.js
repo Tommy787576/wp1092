@@ -12,10 +12,8 @@ const imgs = ["https://picsum.photos/id/1/1000/1000",
     "https://picsum.photos/id/1084/1000/1000"]
 // the index of the current image
 let currIdx = 5;
-// the images already loaded
-let idxSet = new Set([currIdx]);
 
-// get elements by Id
+// get elements by Id and class
 const previousBtn = document.getElementById("previous");
 const nextBtn = document.getElementById("next");
 const display = document.querySelector(".image-viewer__display");
@@ -34,26 +32,11 @@ const genDisplayHTML = (idx) => {
     `
 }
 
-// after loading image, delete the background
-function loadImage() {
-    display.removeAttribute("style");
-}
-
-// add background or not
-const addBackgroundOrNot = (idx) => {
-    if (!idxSet.has(idx)) {
-        display.style.backgroundImage = "url('./images/loading.gif')";
-        idxSet.add(idx);
-    }
-}
-
 // switch to the next picture
 nextBtn.addEventListener("click", () => {
     previousBtn.className = "";
     if (currIdx + 1 != imgs.length) {
-        currIdx += 1;
-        addBackgroundOrNot(currIdx);    // add background if the image hasn't been loaded yet
-        display.innerHTML = genDisplayHTML(currIdx);
+        display.innerHTML = genDisplayHTML(++currIdx);
 
         if (currIdx + 1 == imgs.length)
             nextBtn.className = "disabled";
@@ -64,9 +47,7 @@ nextBtn.addEventListener("click", () => {
 previousBtn.addEventListener("click", () => {
     nextBtn.className = "";
     if (currIdx != 0) {
-        currIdx -= 1;
-        addBackgroundOrNot(currIdx);    // add background if the image hasn't been loaded yet
-        display.innerHTML = genDisplayHTML(currIdx);
+        display.innerHTML = genDisplayHTML(--currIdx);
 
         if (currIdx == 0)
             previousBtn.className = "disabled";
