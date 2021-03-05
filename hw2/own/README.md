@@ -5,7 +5,7 @@ This webpage is able to be viewed at the following link: [http://r09921057_web_p
 
 ### 2. demo gif
 The following is the demo gif:\
-![](./images/hw2_demo.gif)
+![](./images/hw2_demo_ver2.gif)
 
 ### 3. references
 * [Lorem Picsum](https://picsum.photos/)
