@@ -14,8 +14,8 @@ WP109-2 HW2 Review Result
 
 ## Reviewer 2
 - 作業完成情況
-	- 部分符合作業要求 (Pass, 至少有做到題目要求的 baseline 功能)
+	- 完美 (Perfect, 題目的基本與進階要求完全都有做到)
 
 - 簡單評論
-	- Button 在Disabled後還會出現loading的GIF
+	- 都做到，且圖片很好看
 
