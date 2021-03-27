@@ -4,22 +4,35 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         this.todoList = this.props.todoList;
+        this.setIsFinished = this.props.setIsFinished;
     }
-    handleClick(event) {
+    handleClick = (event) => {
         let labelNode = event.target;
         let h1Node = event.target.parentNode.nextSibling;
 
-        // toggle color of the label
-        if (labelNode.style.background === "rgba(99, 99, 99, 0.698)"
-            || !labelNode.style.background) {
-            labelNode.style.background = "rgba(37, 211, 46, 0.698)";
-            h1Node.style.textDecoration = "line-through";
-            h1Node.style.opacity = 0.5;
+        const labelNodeId = parseInt(labelNode.id);
+        let foundIdx = -1;
+        for (let i = 0; i < this.todoList.length; i++) {
+            if (this.todoList[i].id === labelNodeId) {
+                foundIdx = i;
+                break;
+            }
         }
-        else {
-            labelNode.style.background = "rgba(99, 99, 99, 0.698)";
-            h1Node.style.textDecoration = "";
-            h1Node.style.opacity = "";
+
+        // toggle color of the label
+        if (foundIdx !== -1) {
+            if (!this.todoList[foundIdx].isFinished) {
+                labelNode.style.background = "rgba(37, 211, 46, 0.698)";
+                h1Node.style.textDecoration = "line-through";
+                h1Node.style.opacity = 0.5;
+                this.setIsFinished(foundIdx);
+            }
+            else {
+                labelNode.style.background = "rgba(99, 99, 99, 0.698)";
+                h1Node.style.textDecoration = "";
+                h1Node.style.opacity = "";
+                this.setIsFinished(foundIdx);
+            }
         }
     }
     render() {
