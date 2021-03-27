@@ -11,7 +11,7 @@ class TodoApp extends Component {
     handleKeyDown = (event) => {
         if (event.key === "Enter") {
             let currList = this.state.todoList;
-            const id = currList.length;
+            const id = new Date().getTime();
             const todoItem = event.target.value;
 
             currList.push({ id, todoItem });

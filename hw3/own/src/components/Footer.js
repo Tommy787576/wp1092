@@ -11,7 +11,7 @@ const Footer = (props) => (
             <li><button>Active</button></li>
             <li><button>Completed</button></li>
         </ul>
-        <div class="todo-app__clean">
+        <div className="todo-app__clean">
             <button>
                 Clear completed
             </button>
