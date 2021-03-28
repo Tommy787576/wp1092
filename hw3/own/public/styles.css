@@ -187,6 +187,7 @@ input[type='checkbox'] {
     font-size: 0.8em;
     font-weight: inherit;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .todo-app__clean button:focus {
@@ -213,6 +214,7 @@ input[type='checkbox'] {
 
 .todo-app__item-x {
     display: none;
+    cursor: pointer;
 }
 
 .todo-app__item:hover .todo-app__item-x {
