@@ -127,7 +127,7 @@ input[type='checkbox'] {
 .todo-app__item-detail {
     font-weight: 300;
     overflow-wrap: break-word;
-    width: 90%;
+    width: 83%;
     transition: opacity 0.3s;
     height: 100%;
 }
