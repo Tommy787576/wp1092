@@ -21,9 +21,9 @@ class Footer extends Component {
         this.changeMode(mode);
     }
     render() {
-        const colorAll = (this.props.mode === "All") ? { backgroundColor: "" } : { backgroundColor: "transparent" };
-        const colorActive = (this.props.mode === "Active") ? { backgroundColor: "" } : { backgroundColor: "transparent" }
-        const colorCompleted = (this.props.mode === "Completed") ? { backgroundColor: "" } : { backgroundColor: "transparent" }
+        const colorAll = (this.props.mode === "All") ? { backgroundColor: "rgba(153, 153, 153, 0.521)" } : { backgroundColor: "transparent" };
+        const colorActive = (this.props.mode === "Active") ? { backgroundColor: "rgba(153, 153, 153, 0.521)" } : { backgroundColor: "transparent" };
+        const colorCompleted = (this.props.mode === "Completed") ? { backgroundColor: "rgba(153, 153, 153, 0.521)" } : { backgroundColor: "transparent" };
         const isLeftNum = this.countLeft(this.props.todoList);
         const isFinishedNum = this.props.todoList.length - isLeftNum;
 

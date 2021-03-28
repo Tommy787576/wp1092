@@ -8,4 +8,5 @@ This webpage is able to be viewed at the following link: [http://r09921057_web_p
 <!-- ![](./images/hw2_demo_ver2.gif) -->
 
 ### 3. references
-<!-- * [Lorem Picsum](https://picsum.photos/) -->
+* [Array.prototype.filter()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+* [Deploy your react app in 3 minutes with surge](https://medium.com/@viniciusgularte/deploy-your-react-app-in-3-minutes-with-surge-11bebe96b871)

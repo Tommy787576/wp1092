@@ -166,7 +166,9 @@ input[type='checkbox'] {
     padding: 5px;
     font-size: 0.8em;
     font-weight: inherit;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
+    /* border: rgba(153, 153, 153, 0.521) 2px solid; */
+    background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
 }
