@@ -4,9 +4,12 @@
 This webpage is able to be viewed at the following link: [http://r09921057_web_programming_hw3.surge.sh/](http://r09921057_web_programming_hw3.surge.sh/)
 
 ### 2. demo gif
-<!-- The following is the demo gif:\ -->
-<!-- ![](./images/hw2_demo_ver2.gif) -->
+The following is the demo gif:\
+![](./hw3_demo.gif)
 
 ### 3. references
 * [Array.prototype.filter()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+* [Array.prototype.map()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* [Array.prototype.findIndex()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+* [Event.target](https://developer.mozilla.org/zh-TW/docs/Web/API/Event/target)
 * [Deploy your react app in 3 minutes with surge](https://medium.com/@viniciusgularte/deploy-your-react-app-in-3-minutes-with-surge-11bebe96b871)

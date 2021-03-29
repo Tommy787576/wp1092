@@ -47,7 +47,6 @@ class TodoApp extends Component {
         const currList = this.state.todoList;
         const newList = currList.filter(element => !element.isFinished);
 
-        // console.log(newList);
         this.setState({ todoList: newList, mode });
     }
     render() {
