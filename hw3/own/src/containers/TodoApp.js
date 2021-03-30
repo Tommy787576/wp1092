@@ -9,28 +9,30 @@ class TodoApp extends Component {
         this.state = { todoList: [], mode: "All" };
     }
     deleteItem = (idx) => {
-        let currList = this.state.todoList;
-        const mode = this.state.mode;
-
-        currList.splice(idx, 1);
-        this.setState({ todoList: currList, mode });
+        this.setState(state => {
+            let currList = state.todoList;
+            currList.splice(idx, 1);
+            return { todoList: currList, mode: state.mode };
+        });
     }
     setIsFinished = (idx) => {
-        let currList = this.state.todoList;
-        const mode = this.state.mode;
-
-        currList[idx].isFinished = !currList[idx].isFinished;
-        this.setState({ todoList: currList, mode });
+        this.setState(state => {
+            let currList = state.todoList;
+            currList[idx].isFinished = !currList[idx].isFinished;
+            return { todoList: currList, mode: state.mode };
+        });
     }
     handleKeyDown = (event) => {
         if (event.key === "Enter") {
-            let currList = this.state.todoList;
-            const mode = this.state.mode;
-            const id = new Date().getTime();
             const todoItem = event.target.value;
 
-            currList.push({ id, todoItem, isFinished: false });
-            this.setState({ todoList: currList, mode });
+            this.setState(state => {
+                let currList = state.todoList;
+                const id = new Date().getTime();
+
+                currList.push({ id, todoItem, isFinished: false });
+                return { todoList: currList, mode: state.mode };
+            });
 
             // reset to default value
             event.target.value = "";
@@ -38,16 +40,15 @@ class TodoApp extends Component {
         }
     }
     changeMode = (newMode) => {
-        const currList = this.state.todoList;
-
-        this.setState({ todoList: currList, mode: newMode });
+        this.setState(state => ({ todoList: state.todoList, mode: newMode }));
     }
     deleteCompleted = () => {
-        const mode = this.state.mode;
-        const currList = this.state.todoList;
-        const newList = currList.filter(element => !element.isFinished);
+        this.setState(state => {
+            const currList = state.todoList;
+            const newList = currList.filter(element => !element.isFinished);
 
-        this.setState({ todoList: newList, mode });
+            return { todoList: newList, mode: state.mode };
+        });
     }
     render() {
         return (
