@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0px 0px;
+    background-color: #d8d4d4;
+    overflow: hidden;
+}
+
+#top-button {
+    display: flex;
+    padding: 1px 1px 1px 98.6px;
+    background-color: #d8d4d4;
+}
+
+#top-button button {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #a1a0a0;
+    margin: 2px 0px 2px 1px;
+    font-weight: bold;
+}
+
+#left-button {
+    background-color: #d8d4d4;
+    padding: 24.6px 1px 1px 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+#left-button button {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #a1a0a0;
+    margin: 1px 2px 0px 2px;
+    font-weight: bold;
+}
+
+#main-content {
+    display: flex;
+}
+
+table {
+    height: calc(100vh - 50px);
+    width: 95%;
+    display: block;
+    overflow: scroll;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+td {
+    border-bottom: 1px solid #81818171;
+    border-right: 1px solid #81818171;
+    min-width: 110px;
+    max-width: 110px;
+    height: 25px;
+    background-color: white;
+}
+
+td:focus {
+    border: 2px solid blue;
+    outline: None;
+}
+
+th.row {
+    border-bottom: 1.5px solid #818181;
+    border-right: 1.5px solid #818181;
+    min-width: 110px;
+    max-width: 110px;
+    height: 25px;
+    background-color: #fffafa;
+    font-weight: normal;  
+    color: #504d4d;
+
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 0;
+}
+
+th.col {
+    /* border-bottom: 1px solid #81818171;
+    border-right: 1px solid #81818171; */
+    border-bottom: 1.5px solid #818181;
+    border-right: 1.5px solid #818181;
+    min-width: 65px;
+    max-width: 65px;
+    height: 25px;
+    background-color: #fffafa; 
+    font-weight: normal;   
+    color: #504d4d;
+
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    z-index: 0;
+}
+
+.left-top-block {
+    border-bottom: 5px solid #636262c2;
+    border-right: 5px solid #636262c2;
+    min-width: 65px;
+    max-width: 65px;
+    height: 25px;
+    background-color: #fffafa; 
+    font-weight: normal;   
+    color: #504d4d;
+
+    position: fixed;
+    z-index: 1;
+    left: 36px;
+    top: 36px;
+}
