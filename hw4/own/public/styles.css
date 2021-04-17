@@ -62,12 +62,14 @@ td {
     max-width: 110px;
     height: 25px;
     background-color: white;
+    outline: None;
 }
 
+/* 
 td:focus {
     border: 2px solid blue;
     outline: None;
-}
+} */
 
 th.row {
     border-bottom: 1.5px solid #818181;
@@ -117,4 +119,69 @@ th.col {
     z-index: 1;
     left: 36px;
     top: 36px;
+}
+
+/* input {
+    border: 0px;
+    width: 105px;
+}
+
+input:focus {
+    outline: none;
+} */
+
+.blinking-cursor {
+    font-size: 17px;
+    font-weight: lighter;
+    color: #2E3D48;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-webkit-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-ms-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-o-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
 }
