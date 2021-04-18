@@ -63,10 +63,12 @@ td {
     height: 25px;
     background-color: white;
     outline: None;
+    padding: 0px 0px;
+    text-align: center;
 }
 
-/* 
-td:focus {
+
+/* td:focus {
     border: 2px solid blue;
     outline: None;
 } */
@@ -121,15 +123,18 @@ th.col {
     top: 36px;
 }
 
-/* input {
+input {
+    padding: 0px 1px 0px 1px;
     border: 0px;
-    width: 105px;
+    min-width: 105px;
+    max-width: 105px;
+    height: 20px;
 }
 
 input:focus {
     outline: none;
-} */
-
+}
+/* 
 .blinking-cursor {
     font-size: 17px;
     font-weight: lighter;
@@ -184,4 +189,4 @@ input:focus {
     50% {
         color: black;
     }
-}
+} */
