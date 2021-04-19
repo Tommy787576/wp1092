@@ -81,8 +81,10 @@ function FakeSheet() {
         let copy = [...contentArray];
         let currNumCol = numCol;
 
+        let addRowIdx = (prevRow === "0" && prevCol === "0") ? (numCol + 1) : prevCol;
+
         copy.forEach(row => {
-            row.splice(prevCol, 0, "");
+            row.splice(addRowIdx, 0, "");
         })
 
         setNumCol(currNumCol + 1);
