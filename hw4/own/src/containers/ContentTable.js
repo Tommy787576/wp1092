@@ -1,7 +1,7 @@
 import React from "react";
 
 function ContentTable(props) {
-    const { handleKeyDown, handleClick, handleOnChange, numRow, numCol, contentArray } = props;
+    const { handleKeyDown, handleOnChange, numRow, numCol, contentArray } = props;
     let rowIndex = Array.from({ length: numRow }, (_, i) => i + 1);
     let colIndex = Array.from({ length: numCol }, (_, i) => i + 1);
 
@@ -9,7 +9,6 @@ function ContentTable(props) {
         const contentRow = colIndex.map((idxCol) =>
             <td
                 key={idxRow.toString() + "_" + idxCol.toString()}
-                onClick={handleClick}
             >
                 <input
                     id={idxRow.toString() + "_" + idxCol.toString()}

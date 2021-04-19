@@ -10,8 +10,11 @@ function FakeSheet() {
     const [contentArray, setContent] = useState([...Array(101)].map(() => Array(27).fill("")));
 
     const handleClick = (event) => {
+        let col = "0";
+        let row = "0";
+
         if (event.target.tagName === "INPUT") {
-            const [row, col] = event.target.id.split("_");
+            [row, col] = event.target.id.split("_");
             const currInput = document.getElementById(row + "_" + col);
             switchBlock(row, col);
 
@@ -22,6 +25,13 @@ function FakeSheet() {
                 setPrevCol(col);
             }
         }
+        else {
+            unFocusPrev(prevRow, prevCol);
+            setPrevRow(row);
+            setPrevCol(col);
+        }
+
+        console.log(row, col);
     }
 
     const handleKeyDown = (event) => {
@@ -45,34 +55,73 @@ function FakeSheet() {
         setContent(copy);
     }
 
-    const handleAddAbove = () => {
-        console.log("in");
+    const handleAddRow = () => {
         let copy = [...contentArray];
         let currNumRow = numRow;
-        let currRow = prevRow + 1;
 
-        console.log(copy[prevRow][prevCol]);
-        // console.log(copy);
-        copy.splice(prevRow, 0, Array(numCol).fill(""));
-        console.log(copy);
+        let addRowIdx = (prevRow === "0" && prevCol === "0") ? (numRow + 1) : prevRow;
 
-        switchBlock(currRow, prevCol);
+        copy.splice(addRowIdx, 0, Array(numCol).fill(""));
         setNumRow(currNumRow + 1);
         setContent(copy);
-        setPrevRow(currRow);
+    }
+
+    const handleDelRow = () => {
+        if (prevRow !== "0" && prevCol !== "0") {
+            let copy = [...contentArray];
+            let currNumRow = numRow;
+
+            copy.splice(prevRow, 1);
+            setNumRow(currNumRow - 1);
+            setContent(copy);
+        }
+    }
+
+    const handleAddCol = () => {
+        let copy = [...contentArray];
+        let currNumCol = numCol;
+
+        copy.forEach(row => {
+            row.splice(prevCol, 0, "");
+        })
+
+        setNumCol(currNumCol + 1);
+        setContent(copy);
+    }
+
+    const handleDelCol = () => {
+        if (prevRow !== "0" && prevCol !== "0") {
+            let copy = [...contentArray];
+            let currNumCol = numCol;
+
+            copy.forEach(row => {
+                row.splice(prevCol, 1);
+            })
+
+            setNumCol(currNumCol - 1);
+            setContent(copy);
+        }
     }
 
     const switchBlock = (row, col) => {
+        unFocusPrev(row, col);
+        focusNext(row, col);
+    }
+
+    const unFocusPrev = (row, col) => {
         const prevBlock = document.getElementById(prevRow + "_" + prevCol).parentNode;
         const prevRowBlock = document.getElementById(prevRow + "_0");
         const prevColBlock = document.getElementById("0_" + prevCol);
-        const currBlock = document.getElementById(row + "_" + col).parentNode;
-        const currRowBlock = document.getElementById(row + "_0");
-        const currColBlock = document.getElementById("0_" + col);
 
         prevBlock.style.border = "";
         prevRowBlock.style.backgroundColor = "#fffafa";
         prevColBlock.style.backgroundColor = "#fffafa";
+    }
+
+    const focusNext = (row, col) => {
+        const currBlock = document.getElementById(row + "_" + col).parentNode;
+        const currRowBlock = document.getElementById(row + "_0");
+        const currColBlock = document.getElementById("0_" + col);
 
         currBlock.style.border = "2px solid blue";
         currRowBlock.style.backgroundColor = "#ece9e9";
@@ -80,15 +129,15 @@ function FakeSheet() {
     }
 
     return (
-        <>
+        <div id="outer-most" onClick={handleClick}>
             <div id="top-button">
-                <button>+</button>
-                <button>-</button>
+                <button onClick={handleAddCol}>+</button>
+                <button onClick={handleDelCol}>-</button>
             </div>
             <div id="main-content">
                 <div id="left-button">
-                    <button onClick={handleAddAbove}>+</button>
-                    <button>-</button>
+                    <button onClick={handleAddRow}>+</button>
+                    <button onClick={handleDelRow}>-</button>
                 </div>
                 <table>
                     <thead>
@@ -97,7 +146,6 @@ function FakeSheet() {
                     <tbody>
                         <ContentTable
                             handleKeyDown={handleKeyDown}
-                            handleClick={handleClick}
                             handleOnChange={handleOnChange}
                             numRow={numRow}
                             numCol={numCol}
@@ -106,7 +154,7 @@ function FakeSheet() {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 }
 
