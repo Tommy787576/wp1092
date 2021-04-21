@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# EE 3035, Web Programming, 109-2
+## Practice Homework #4: React.JS練習 - Fake Spreadsheet
+### 1. usage
+```
+$ yarn install
+$ yarn start
+```
+### 2. webpage 
+This webpage is able to be viewed at the following link: [http://r09921057_web_programming_hw4.surge.sh/](http://r09921057_web_programming_hw4.surge.sh/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 3. demo gif
+The following is the demo gif:\
+![](./hw4_demo.gif)
 
-## Available Scripts
+### 4. references
+* https://stackoverflow.com/questions/3145030/convert-integer-into-its-character-equivalent-where-0-a-1-b-etc/3145054#3145054
 
-In the project directory, you can run:
+* https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
 
-### `yarn start`
+* https://stackoverflow.com/questions/4457274/how-to-specify-tables-height-such-that-a-vertical-scroll-bar-appears
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* https://www.webtech.tw/info.php?tid=28
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* https://stackoverflow.com/questions/39741709/css-focus-not-working
 
-### `yarn test`
+* https://www.cnblogs.com/coco1s/p/6402723.html
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* https://stackoverflow.com/questions/16512182/how-to-create-empty-2d-array-in-javascript/39639530
 
-### `yarn build`
+* https://codepen.io/ArtemGordinsky/pen/GnLBq
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* https://stackoverflow.com/questions/59249783/update-a-2d-array-matrix-with-usestate-in-react
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* https://codereview.stackexchange.com/questions/16124/implement-numbering-scheme-like-a-b-c-aa-ab-aaa-similar-to-converting
