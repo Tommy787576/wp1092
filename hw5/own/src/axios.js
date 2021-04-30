@@ -26,7 +26,7 @@ const guess = async (number) => {
   catch (error) {
     if (error.response !== undefined) {
       alert(`Error: "${number}" is not a valid number (1 - 100)`);
-      return 'Not a legal number.';
+      return 'Not a legal number';
     }
     else
       alert("Error: Network Connection Problem, Please try again later")
