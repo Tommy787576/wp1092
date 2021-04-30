@@ -6,7 +6,7 @@ function App() {
   const [hasStarted, setHasStarted] = useState(false)
   const [hasWon, setHasWon] = useState(false)
   const [number, setNumber] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState("Please enter a number")
 
   const startMenu = (
     <div>
@@ -15,10 +15,8 @@ function App() {
         className="btn btn-secondary"
         onClick={async () => {
           const msg = await startGame()
-          if (msg === "The game has started.") {
+          if (msg === "The game has started.")
             setHasStarted(true)
-            setStatus("Please enter a number")
-          }
         }}
       >
         start game
@@ -50,8 +48,10 @@ function App() {
   const handleGuess = async () => {
     const msg = await guess(number);
 
-    if (msg === status)
-      setStatus(msg + " again");
+    if (msg === undefined)
+      setStatus("Please enter a number")
+    else if (msg === status)
+      setStatus(msg + " again")
     else
       setStatus(msg);
 

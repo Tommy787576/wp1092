@@ -10,7 +10,7 @@ const startGame = async () => {
     return msg
   }
   catch (error) {
-    alert("Error: Network Connection Problem, Please try again latter")
+    alert("Error: Network Connection Problem, Please try again later")
   }
 }
 
@@ -29,7 +29,7 @@ const guess = async (number) => {
       return 'Not a legal number.';
     }
     else
-      alert("Error: Network Connection Problem, Please try again latter")
+      alert("Error: Network Connection Problem, Please try again later")
   }
 }
 
@@ -41,7 +41,7 @@ const restart = async () => {
     return msg
   }
   catch (error) {
-    alert("Error: Network Connection Problem, Please try again latter")
+    alert("Error: Network Connection Problem, Please try again later")
   }
 }
 
