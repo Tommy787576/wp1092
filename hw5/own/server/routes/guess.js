@@ -19,10 +19,11 @@ router.post('/start', (_, res) => {
   const number = getNumber(true)
 
   // write the log: start
-  const currTime = moment().format('YYYY-MM-DD-HH-mm');
+  const currTime = moment().format('YYYY-MM-DD-HH-mm-ss');
   fs.appendFile(filePath, `start number=${number} ${currTime}\n`, function (err) {
     if (err)
       console.log("Write Error")
+    console.log(`start number=${number} ${currTime}`)
   });
 
   res.json({ msg: 'The game has started.' })
@@ -33,10 +34,11 @@ router.get('/guess', (req, res) => {
   const guessed = roughScale(req.query.number, 10)
 
   // write the log: guess
-  const currTime = moment().format('YYYY-MM-DD-HH-mm');
+  const currTime = moment().format('YYYY-MM-DD-HH-mm-ss');
   fs.appendFile(filePath, `guess ${guessed} ${currTime}\n`, function (err) {
     if (err)
       console.log("Write Error")
+    console.log(`guess ${guessed} ${currTime}`)
   });
 
   // check if NOT a num or not in range [1,100]
@@ -52,10 +54,11 @@ router.get('/guess', (req, res) => {
       res.status(200).send({ msg: "Smaller" });
     else {
       // write the log: end-game
-      const currTime = moment().format('YYYY-MM-DD-HH-mm');
+      const currTime = moment().format('YYYY-MM-DD-HH-mm-ss');
       fs.appendFile(filePath, "end-game\n", function (err) {
         if (err)
           console.log("Write Error")
+        console.log("end-game")
       });
       res.status(200).send({ msg: "Equal" });
     }
@@ -67,10 +70,11 @@ router.post('/restart', (_, res) => {
   const number = getNumber(true)
 
   // write the log: restart
-  const currTime = moment().format('YYYY-MM-DD-HH-mm')
+  const currTime = moment().format('YYYY-MM-DD-HH-mm-ss')
   fs.appendFile(filePath, `restart number=${number} ${currTime}\n`, function (err) {
     if (err)
       console.log("Write Error")
+    console.log(`restart number=${number} ${currTime}`)
   });
 
   res.json({ msg: 'The game has restarted.' })

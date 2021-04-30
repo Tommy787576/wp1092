@@ -48,16 +48,20 @@ const dir = "./server/log";
 if (!fs.existsSync(dir)) {
   try {
     fs.mkdirSync(dir);
+    console.log("Make Directory Success");
   }
   catch {
     console.log("Make Directory Error");
   }
 }
 
-const currTime = moment().format('YYYY-MM-DD-HH-mm');
-fs.open(`./server/log/${currTime}.log`, 'w', function (err) {
+// create a log file
+const currTime = moment().format('YYYY-MM-DD-HH-mm-ss');
+fs.writeFile(`./server/log/${currTime}.log`, '', function (err) {
   if (err)
-    console.log("Make File Error")
+    console.log("Make File Error");
+  else
+    console.log("Make File Success");
 });
 
 export const filePath = `./server/log/${currTime}.log`;
