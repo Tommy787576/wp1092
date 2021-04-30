@@ -5,3 +5,11 @@
   align-items: center;
   justify-content: center;
 }
+
+#game-title {
+  margin-bottom: 20px;
+}
+
+#finish-title {
+  margin-bottom: 20px;
+}

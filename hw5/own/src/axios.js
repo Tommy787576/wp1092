@@ -3,11 +3,15 @@ import axios from 'axios'
 const instance = axios.create({ baseURL: 'http://localhost:4000/api/guess' })
 
 const startGame = async () => {
-  const {
-    data: { msg }
-  } = await instance.post('/start')
-
-  return msg
+  try {
+    const {
+      data: { msg }
+    } = await instance.post('/start')
+    return msg
+  }
+  catch (error) {
+    alert("Error: Network Connection Problem, Please try again latter")
+  }
 }
 
 const guess = async (number) => {
@@ -20,16 +24,25 @@ const guess = async (number) => {
     return msg
   }
   catch (error) {
-    return `Error: "${number}" is not a valid number (1 - 100)`;
+    if (error.response !== undefined) {
+      alert(`Error: "${number}" is not a valid number (1 - 100)`);
+      return 'Not a legal number.';
+    }
+    else
+      alert("Error: Network Connection Problem, Please try again latter")
   }
 }
 
 const restart = async () => {
-  const {
-    data: { msg }
-  } = await instance.post('/restart')
-
-  return msg
+  try {
+    const {
+      data: { msg }
+    } = await instance.post('/restart')
+    return msg
+  }
+  catch (error) {
+    alert("Error: Network Connection Problem, Please try again latter")
+  }
 }
 
 export { startGame, guess, restart }

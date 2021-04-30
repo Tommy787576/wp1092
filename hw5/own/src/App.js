@@ -10,10 +10,15 @@ function App() {
 
   const startMenu = (
     <div>
+      <h3 id="game-title">Guess Number Game</h3>
       <button
+        className="btn btn-secondary"
         onClick={async () => {
-          await startGame()
-          setHasStarted(true)
+          const msg = await startGame()
+          if (msg === "The game has started.") {
+            setHasStarted(true)
+            setStatus("Please enter a number")
+          }
         }}
       >
         start game
@@ -23,13 +28,16 @@ function App() {
 
   const winningMode = (
     <>
-      <p>you won! the number was {number}.</p>
+      <h4 id="finish-title">you won! the number was {number}.</h4>
       <button
+        className="btn btn-secondary"
         onClick={async () => {
-          await restart()
-          setHasWon(false)
-          setStatus('')
-          setNumber('')
+          const msg = await restart()
+          if (msg === 'The game has restarted.') {
+            setHasWon(false)
+            setStatus("Please enter a number")
+            setNumber('')
+          }
         }}
       >
         restart
@@ -41,25 +49,39 @@ function App() {
   // 2. Process the response from server to set the proper state values
   const handleGuess = async () => {
     const msg = await guess(number);
-    setStatus(msg);
+
+    if (msg === status)
+      setStatus(msg + " again");
+    else
+      setStatus(msg);
+
     if (msg === "Equal")
       setHasWon(true);
   }
 
   const gameMode = (
     <>
-      <p>Guess a number between 1 to 100</p>
-      <input
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
-      ></input>
-      <button
-        onClick={handleGuess}
-        disabled={!number}
-      >
-        guess!
-      </button>
-      <p>{status}</p>
+      <h4>Guess a number between 1 to 100</h4>
+      <div className="input-group mb-3">
+        <input
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          type="text"
+          className="form-control"
+        />
+        <div className="input-group-append">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            id="button-addon2"
+            onClick={handleGuess}
+            disabled={!number}
+          >
+            guess!
+          </button>
+        </div>
+      </div>
+      <h5>{status}</h5>
     </>
   )
 
