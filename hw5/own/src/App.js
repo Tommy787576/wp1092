@@ -26,7 +26,7 @@ function App() {
 
   const winningMode = (
     <>
-      <h4 id="finish-title">you won! the number was {number}.</h4>
+      <h4 id="finish-title">You won! The number was {number}.</h4>
       <button
         className="btn btn-secondary"
         onClick={async () => {
