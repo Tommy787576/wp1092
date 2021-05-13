@@ -1,0 +1,59 @@
+.ScoreCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 500px;
+    margin: auto;
+}
+
+.ScoreCard-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ScoreCard-title h1 {
+    margin: 0;
+    margin-right: 20px;
+    font-size: 3em;
+}
+
+.ScoreCard-add {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ScoreCard Input {
+    margin: 0px 2px;
+}
+
+.ScoreCard Button {
+    margin: 0px 2px;
+}
+
+.ScoreCard-query {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ScoreCard-query Input {
+    margin-left: 10px;
+}
+
+.ScoreCard-messages {
+    width: 100%;
+    height: 40vh;
+    background: #c2b9b952;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    overflow: auto;
+}
