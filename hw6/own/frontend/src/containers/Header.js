@@ -29,7 +29,7 @@ const Header = () => {
     <Wrapper>
       <Typography variant="h2">ScoreCard DB</Typography>
       <Button variant="contained" color="secondary" onClick={handleClear}>
-        Clear
+        Clear Database
       </Button>
     </Wrapper>
   );

@@ -39,7 +39,7 @@ const ContentPaper = styled(Paper)`
 const Body = () => {
   const classes = useStyles();
 
-  const { messages, addCardMessage, addRegularMessage, addErrorMessage } =
+  const { messages, addCardMessage, addRegularMessage, addErrorMessage, clearMessages } =
     useScoreCard();
 
   const [name, setName] = useState('');
@@ -79,6 +79,10 @@ const Body = () => {
     if (!messages) addErrorMessage(message);
     else addRegularMessage(...messages);
   };
+
+  const handleClearOutputs = () => {
+    clearMessages();
+  }
 
   return (
     <Wrapper>
@@ -158,7 +162,10 @@ const Body = () => {
           </Typography>
         ))}
       </ContentPaper>
-    </Wrapper>
+      <Button variant="contained" color="primary" style={{ marginTop: "20px" }} onClick={handleClearOutputs}>
+        Clear Outputs
+      </Button>
+    </Wrapper >
   );
 };
 
