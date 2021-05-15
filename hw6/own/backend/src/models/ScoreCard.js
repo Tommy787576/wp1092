@@ -1,7 +1,12 @@
+// Define ScoreCardSchema
+//   name   : String
+//   subject: String
+//   score  : Number
+
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
-const UserSchema = new Schema({
+const ScoreCardSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Name field is required.']
@@ -15,6 +20,6 @@ const UserSchema = new Schema({
         required: [true, 'Score field is required.']
     }
 });
-const ScoreCard = mongoose.model('ScoreCard', UserSchema);
+const ScoreCard = mongoose.model('ScoreCard', ScoreCardSchema);
 
 export default ScoreCard;
