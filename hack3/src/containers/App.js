@@ -62,10 +62,6 @@ function App() {
     )
   }
 
-  const setCurr = () => {
-    console.log("in2");
-  }
-
   return (
     <div className="wrapper">
       <div className="welcome-title"><h1>Welcome to MRT Distance Calculator !</h1></div>
@@ -74,20 +70,24 @@ function App() {
 
           <span id="start-station-span">起始站</span>
           <select id="start-select" className="start-station"> {/* you should add both onChange and value to attributes */}
-            <option></option>
-            {
-              // generate options of all stations within option group
-              // coding here ...
-            }
+            {Object.keys(data).map(line => (
+              <optgroup label={line}>
+                {data[line].map(obj => (
+                  <option id={`start-group-${obj.station_id}`}>{obj.station_name}</option>
+                ))}
+              </optgroup>)
+            )}
           </select>
 
           <span id="end-station-span">終點站</span>
           <select id="end-select" className="end-station"> {/* you should add both onChange and value to attributes */}
-            <option></option>
-            {
-              // generate options of all stations within option group
-              // coding here ...
-            }
+            {Object.keys(data).map(line => (
+              <optgroup label={line}>
+                {data[line].map(obj => (
+                  <option id={`end-group-${obj.station_id}`}>{obj.station_name}</option>
+                ))}
+              </optgroup>)
+            )}
           </select>
 
           <button onClick={calculateDistance} id="search-btn">查詢距離</button>
@@ -98,7 +98,7 @@ function App() {
         </div>
 
         <div className="route-graph-info-container">
-          {Object.keys(data).map(line => <RouteGraph route_data={data[line]} setCurr={setCurr} />)}
+          {Object.keys(data).map(line => <RouteGraph route_data={data[line]} setCurr={setCurrentStationId} />)}
           {/* <RouteGraph route_data={data.R} /> */}
           {/* // you should pass data to child component with your own customized parameters */}
           <StationInfo info={current_station_id} /> {/* you should pass data to child component with your own customized parameters */}

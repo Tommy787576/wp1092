@@ -36,9 +36,14 @@ function Station(props) {
     return nameClass;
   }
 
+  // const handleClick = (data) => {
+  //   data = JSON.stringify(data);
+  //   props.setCurr(data);
+  // }
+
   return (
     <div className="station-line-container">
-      <div id={`s-${data.station_id}`} className="station-and-name" onClick={props.setCurr}> {/* you should add both id and onClick to attributes */}
+      <div id={`s-${data.station_id}`} className="station-and-name"> {/* you should add both id and onClick to attributes */}
         <div className={getRectClassName()}>{data.station_id}</div>
         <div className="station-name">{data.station_name}</div>
       </div>
