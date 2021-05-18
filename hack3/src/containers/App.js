@@ -98,7 +98,7 @@ function App() {
         </div>
 
         <div className="route-graph-info-container">
-          {Object.keys(data).map(line => <RouteGraph route_data={data[line]} setCurr={setCurrentStationId} />)}
+          {Object.keys(data).map(line => <RouteGraph route_data={data[line]} />)}
           {/* <RouteGraph route_data={data.R} /> */}
           {/* // you should pass data to child component with your own customized parameters */}
           <StationInfo info={current_station_id} /> {/* you should pass data to child component with your own customized parameters */}
