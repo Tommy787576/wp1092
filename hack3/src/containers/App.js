@@ -49,6 +49,16 @@ function App() {
   const calculateDistance = async () => {
     // send start and end stations to backend and get distance
     // coding here ...
+    // try {
+    //   const {
+    //     data: { message, data }
+    //   } = await instance.get('/getStations')
+
+    //   return data;
+    // }
+    // catch (error) {
+    //   console.log("Error");
+    // }
   }
 
   // fetch data here after 1st render
