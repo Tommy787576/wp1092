@@ -1,5 +1,5 @@
 # EE 3035, Web Programming, 109-2
-## Practice Homework #5: Backend練習 - Number Guessing Game
+## Practice Homework #6: React + Axios + Express + Mongoose
 ### 1. usage
 - client side
 ```
@@ -9,6 +9,7 @@ $ yarn start
 ```
 
 - server side (Please open another terminal first)
+Please add your .env file under ./backend directory first.
 ```
 $ cd backend
 $ yarn install
