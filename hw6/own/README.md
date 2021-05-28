@@ -8,8 +8,7 @@ $ yarn install
 $ yarn start
 ```
 
-- server side (Please open another terminal first)
-Please add your .env file under ./backend directory first.
+- server side (Please open another terminal and add your .env file under ./backend directory first.)
 ```
 $ cd backend
 $ yarn install
