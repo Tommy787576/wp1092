@@ -45,7 +45,7 @@ const ChatRoom = ({ me, displayStatus }) => {
                                     <p>{friend}'s chatbox.</p>
                                 ) : (
                                     messages.map(({ name, body }, i) => {
-                                    if (name === me) {
+                                    if (name !== me) {
                                         return (
                                             <p className="App-message" key={i}>
                                                 <span className="message-sender">{name}</span> 
