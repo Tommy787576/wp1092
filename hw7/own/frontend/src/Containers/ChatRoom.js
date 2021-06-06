@@ -10,7 +10,7 @@ const ChatRoom = ({ me, displayStatus }) => {
     const [messageInput, setMessageInput] = useState("");
     const [modalVisible, setModalVisible] = useState(false);
     const [activeKey, setActiveKey] = useState("");
-    const { chatBoxes, createChatBox, removeChatBox } = useChatBox();
+    const { chatBoxes, createChatBox, removeChatBox } = useChatBox(displayStatus);
     const { sendMessage, startChat, messages } = useChat(me);
 
     const addChatBox = () => { setModalVisible(true); };
@@ -49,6 +49,7 @@ const ChatRoom = ({ me, displayStatus }) => {
                                         return (
                                             <p className="App-message" key={i}>
                                                 <span className="message-sender">{name}</span> 
+                                                <br />
                                                 <span className="message-text">{body}</span>
                                             </p>
                                         )
@@ -56,8 +57,9 @@ const ChatRoom = ({ me, displayStatus }) => {
                                     else {
                                         return (
                                             <p className="App-message" style={{textAlign: "right"}} key={i}>
+                                                <span className="message-sender">You</span>
+                                                <br />
                                                 <span className="message-text">{body}</span> 
-                                                <span className="message-sender">{name}</span>
                                             </p>
                                         )
                                     }

@@ -13,7 +13,10 @@ const ChatModal = ({ visible, onCreate,
                 form.validateFields().then((values) => {
                     form.resetFields();
                     onCreate(values);
-                }).catch((e) => { window.alert("There are some error!"); });
+                }).catch((e) => {
+                    console.log("There are some error!");
+                    // window.alert("There are some error!"); 
+                });
             }}>
             <Form form={form} layout="vertical"
                 name="form_in_modal">

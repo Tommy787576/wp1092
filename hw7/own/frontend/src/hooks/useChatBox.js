@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useChatBox = () => {
+const useChatBox = (displayStatus) => {
     const [chatBoxes, setChatBoxes] = useState([
         // {
         //     friend: "Mary", key: "MaryChatbox",
@@ -17,6 +17,10 @@ const useChatBox = () => {
         //     `${me}_${friend}` : `${friend}_${me}`;
         const newKey = `${friend}`;
         if (chatBoxes.some(({ key }) => key === newKey)) {
+            displayStatus({
+                type: "error",
+                msg: `${friend}'s chat box has already opened.`,
+            });
             throw new Error(friend +
                 "'s chat box has already opened.");
         }
@@ -24,6 +28,7 @@ const useChatBox = () => {
         const chatLog = [];
         newChatBoxes.push({ friend, key: newKey, chatLog });
         setChatBoxes(newChatBoxes);
+
         return newKey;
     };
     const removeChatBox = (targetKey, activeKey) => {

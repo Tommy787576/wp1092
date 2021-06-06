@@ -30,9 +30,13 @@
   overflow: auto;
 }
 
+.message-sender {
+  font-size: 11px;
+}
+
 .message-text {
   background: #c2bebe52;
   border-radius: 4px;
-  padding: 4px 6px;
-  margin: 0px 4px;
+  padding: 1.5px 6px;
+  overflow-wrap: break-word;
 }

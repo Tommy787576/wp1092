@@ -13,13 +13,16 @@ const useChat = (me) => {
     server.sendEvent = (e) => server.send(JSON.stringify(e));
 
     const startChat = (key) => {
-        server.sendEvent({
-            type: 'CHAT',
-            data: { to: key, name: me },
-        });
+        if (key) {
+            server.sendEvent({
+                type: 'CHAT',
+                data: { to: key, name: me },
+            });
+        }
     };
 
     const sendMessage = (payload) => {
+        console.log(payload);
         server.sendEvent({
             type: 'MESSAGE',
             data: { to: payload.key, name: me, body: payload.body },
