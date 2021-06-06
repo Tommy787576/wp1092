@@ -2,7 +2,7 @@
 ## Practice Homework #7: ChatRoom - A Full-Stack Application
 ### 1. Usage
 - client side
-1. Please a terminal.
+1. Please a open terminal.
 2. Enter the following commands:
 ```
 $ cd frontend
