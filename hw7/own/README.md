@@ -2,7 +2,7 @@
 ## Practice Homework #7: ChatRoom - A Full-Stack Application
 ### 1. Usage
 - client side
-1. Please a open terminal.
+1. Please open a terminal.
 2. Enter the following commands:
 ```
 $ cd frontend
@@ -11,8 +11,8 @@ $ yarn start
 ```
 
 - server side 
-1. Please open another terminal.
-2. Add your .env file under ./backend directory.
+1. Add your .env file under ./backend directory.
+2. Please open another terminal.
 3. Enter the following commands:
 ```
 $ cd backend
