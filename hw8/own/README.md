@@ -26,7 +26,6 @@ $ yarn server
     - 未輸入名字就按 “Sign In”
     - 未開啟任何 ChatBox 就送出訊息
     - 創建 ChatBox 時沒有輸入對話者名字，或者是與對話者之 ChatBox 已開啟 (i.e. 不可重複開啟同⼀個 ChatBox)
-- 處理輸入過長時 “Line Wrapping” 的問題
 
 ### 3. Demo Gif
 ![](./Demo.gif)
