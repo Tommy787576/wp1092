@@ -1,7 +1,9 @@
+// gotta load in MONGO_URL before `mongo.connect()`
 const mongoose = require('mongoose');
-const dotenv = require('dotenv-defaults')
+
 // i use mongodb://localhost:27017/cardmongo for MONGO_URL
-dotenv.config();
+
+
 function connectMongo() {
   mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

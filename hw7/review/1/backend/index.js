@@ -1,232 +1,88 @@
-const mongoose = require('mongoose');
-const http = require('http');
-const WebSocket = require('ws');
-const express = require('express');
-const path = require('path');
-const uuid = require('uuid');
-require('dotenv-defaults').config();
-const mongo = require('./mongo');
+import http from 'http';
+import express from 'express';
+import dotenv from 'dotenv-defaults';
+import mongoose from 'mongoose';
+import WebSocket from 'ws';
+
+dotenv.config();
+
+if (!process.env.MONGO_URL) {
+  console.error('Missing MONGO_URL!!!');
+  process.exit(1);
+}
+
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+  throw new Error('DB connection error: ' + error);
+});
 
 const app = express();
-
-/* -------------------------------------------------------------------------- */
-/*                               MONGOOSE MODELS                              */
-/* -------------------------------------------------------------------------- */
-const { Schema } = mongoose;
-
-const userSchema = new Schema({
-  name: { type: String, required: true },
-  // chatBoxes: [{ type: mongoose.Types.ObjectId, ref: 'ChatBox' }],
-  chatBoxes: [{type:String, required: true}],
-});
-
-const messageSchema = new Schema({
-  chatBox: { type: mongoose.Types.ObjectId, ref: 'ChatBox' },
-  sender: { type: mongoose.Types.ObjectId, ref: 'User' },
-  body: { type: String, required: true },
-});
-
-const chatBoxSchema = new Schema({
-  name: { type: String, required: true },
-  users: [{ type: mongoose.Types.ObjectId, ref: 'User' }],
-  messages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }],
-});
-
-const UserModel = mongoose.model('User', userSchema);
-const ChatBoxModel = mongoose.model('ChatBox', chatBoxSchema);
-const MessageModel = mongoose.model('Message', messageSchema);
-
-/* -------------------------------------------------------------------------- */
-/*                                  UTILITIES                                 */
-/* -------------------------------------------------------------------------- */
-const makeName = (name, to) => {
-  return [name, to].sort().join('_');
-};
-
-/* -------------------------------------------------------------------------- */
-/*                            SERVER INITIALIZATION                           */
-/* -------------------------------------------------------------------------- */
 const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
-const wss = new WebSocket.Server({
-  server,
-});
+const wssConnect = (ws) => {
+  const sendData = (data) => {
+    ws.send(JSON.stringify(data));
+  };
+  const sendStatus = (payload) => {
+    sendData(['status', payload]);
+  };
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-const validateUser = async (name) => {
-  const existing = await UserModel.findOne({ name });
-  if (existing) return existing;
-  return new UserModel({ name }).save();
-};
-
-const validateChatBox = async (name, participants) => {
-  let box = await ChatBoxModel.findOne({ name });
-  if (!box) box = await new ChatBoxModel({ name, users: participants }).save();
-  return box
-    .populate('users')
-    .populate({ path: 'messages', populate: 'sender' })
-    .execPopulate();
-};
-
-// (async () => {
-//   const a = await validateUser('a');
-//   const b = await validateUser('b');
-
-//   console.log(a);
-
-//   const cbName = makeName('a', 'b');
-
-//   const chatBox = await validateChatBox(cbName, [a, b]);
-
-//   console.log(chatBox);
-// })();
-
-const chatBoxes = {}; // keep track of all open AND active chat boxes
-
-wss.on('connection', function connection(client) {
-  client.id = uuid.v4();
-  client.box = ''; // keep track of client's CURRENT chat box
-
-  client.sendEvent = (e) => client.send(JSON.stringify(e));
-
-  client.on('message', async function incoming(message) {
-    message = JSON.parse(message);
-    const { type } = message;
-    switch (type) {
-      // on open chat box
-      case 'CHAT': {
-        const {
-          data: { name, to },
-        } = message;
-
-        const chatBoxName = makeName(name, to);
-
-        const sender = await validateUser(name);
-        const receiver = await validateUser(to);
-        const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
-        if(sender.chatBoxes.find(n=> n==to)==null){
-          sender.chatBoxes.push(to);
-          console.log(sender.chatBoxes);
-          await sender.save();
-        }
-        // if client was in a chat box, remove that.
-        if (chatBoxes[client.box])
-          // user was in another chat box
-          chatBoxes[client.box].delete(client);
-
-        // use set to avoid duplicates
-        client.box = chatBoxName;
-        if (!chatBoxes[chatBoxName]) chatBoxes[chatBoxName] = new Set(); // make new record for chatbox
-        chatBoxes[chatBoxName].add(client); // add this open connection into chat box
-        // console.log({
-        //   type: 'CHAT',
-        //   data: {
-        //     messages: chatBox.messages.map(({ sender: { name }, body }) => ({
-        //       name,
-        //       body,
-        //     })),
-        //   },
-        // });
-        client.sendEvent({
-          type: 'CHAT',
-          data: {
-            messages: chatBox.messages.map(({ sender: { name }, body }) => ({
-              name,
-              body,
-            })),
-          },
-        });
-        break;
-      }
-
-      case 'BOX':{
-        const{data:{user}}=message;
-        const me = await validateUser(user);
-        // console.log({
-        //   type: 'BOX',
-        //   data: {
-        //     friends: friendkeys.map((n) => n),
-        //   },
-        // })
-        client.sendEvent({
-          type: 'BOX',
-          data: {
-            friends: me.chatBoxes
-          },
-        });
-        break;
-      }
-
-      case 'DELETE':{
-        const {
-          data: { key, newkey, me },
-        } = message;
-        const sender = await validateUser(me);
-        const names = key.split("_");
-        const receiver = (names[0]==me)? names[1]:names[0]
-        sender.chatBoxes = sender.chatBoxes.filter(n=> n!=receiver);
-        // console.log(sender.chatBoxes);
-        await sender.save();
-        if (chatBoxes[client.box])
-          // user was in another chat box
-          chatBoxes[client.box].delete(client);
-
-        // use set to avoid duplicates
-        client.box = newkey;
-        break;
-      }
-
-      case 'MESSAGE': {
-        const {
-          data: { name, to, body },
-        } = message;
-        const chatBoxName = makeName(name, to);
-
-        const sender = await validateUser(name);
-        const receiver = await validateUser(to);
-        const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
-
-        const newMessage = new MessageModel({ sender, body });
-        await newMessage.save();
-
-        chatBox.messages.push(newMessage);
-        await chatBox.save();
-        // console.log({
-        //   type: 'MESSAGE',
-        //   data: {
-        //     message: {
-        //       name,
-        //       to,
-        //       body,
-        //     },
-        //   },
-        // });
-        chatBoxes[chatBoxName].forEach((client) => {
-          client.sendEvent({
-            type: 'MESSAGE',
-            data: {
-              message: {
-                name,
-                to,
-                body,
-              },
-            },
-          });
-        });
-        break;
-      }
-    }
-
-    // disconnected
-    client.once('close', () => {
-      chatBoxes[client.box]?.delete(client);
+  Message.find()
+    .sort({ created_at: -1 })
+    .limit(100)
+    .exec((err, res) => {
+      if (err) throw err;
+      // initialize app with existing messages
+      sendData(['init', res]);
     });
+
+  ws.onmessage = async (byteString) => {
+    const { data } = byteString;
+    const [task, payload] = JSON.parse(data);
+    switch (task) {
+      case 'input': {
+        const { name, body } = payload;
+        const message = new Message({ name, body });
+        try {
+          await message.save();
+        } catch (e) {
+          throw new Error('Message DB save error: ' + e);
+        }
+        sendData(['output', [payload]]);
+        sendStatus({
+          type: 'success',
+          msg: 'Message sent.',
+        });
+        break;
+      }
+      case 'clear': {
+        Message.deleteMany({}, () => {
+          sendData(['cleared']);
+          sendStatus({ type: 'info', msg: 'Message cache cleared.' });
+        });
+        break;
+      }
+      default:
+        break;
+    }
+  };
+};
+
+db.once('open', () => {
+  console.log('MongoDB connected!');
+
+  wss.on('connection', wssConnect);
+
+  const PORT = process.env.port || 4000;
+
+  server.listen(PORT, () => {
+    console.log(`Listening on http://localhost:${PORT}`);
   });
-});
-
-mongo.connect();
-
-server.listen(8080, () => {
-  console.log('Server listening at http://localhost:8080');
 });

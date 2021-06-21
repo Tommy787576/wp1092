@@ -21,7 +21,6 @@ const SignIn = ({ me, setMe, setSignedIn, displayStatus }) => (
           });
         else setSignedIn(true);
       }}
-
     ></Input.Search>
   </>
 );
