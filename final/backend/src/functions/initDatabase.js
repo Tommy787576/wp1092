@@ -28,15 +28,15 @@ const setDatabase = async (version) => {
     let id = '';
 
     if (version === "TaipeiVer1") {
-        data = await getTaipeiVer1;
+        data = await getTaipeiVer1();
         id = '1.0';
     }
     else if (version === "TaipeiVer2") {
-        data = await getTaipeiVer2;
+        data = await getTaipeiVer2();
         id = '2.0';
     }
     else if (version === "NewTaipeiVer1") {
-        data = await getNewTaipeiVer1;
+        data = await getNewTaipeiVer1();
         id = '1.0';
     }
 

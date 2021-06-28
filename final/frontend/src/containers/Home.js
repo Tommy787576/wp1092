@@ -167,7 +167,6 @@ const Home = () => {
         return new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition((position) => {
                 const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-
                 axios.get('/api/getCloseStation', {
                     params: {
                         ver: version,

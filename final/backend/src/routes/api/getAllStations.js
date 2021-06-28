@@ -8,10 +8,11 @@ router.get('/getAllStations', async (req, res) => {
         const version = req.query.ver;
         const { stations } = await VerAllStations.findOne({ version });;
 
+        console.log("getAllstations router success");
         res.status(200).send(stations);
     }
     catch (err) {
-        console.log("getAllStations error");
+        console.log("getAllStations router error");
         console.log(err);
         res.status(500).send({ error: err });
     }

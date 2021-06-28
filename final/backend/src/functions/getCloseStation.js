@@ -6,11 +6,11 @@ const getCloseStation = async (version, dist, currLat, currLng) => {
     let retData = [];
 
     if (version === "TaipeiVer1")
-        data = await getTaipeiVer1;
+        data = await getTaipeiVer1();
     else if (version === "TaipeiVer2")
-        data = await getTaipeiVer2;
+        data = await getTaipeiVer2();
     else if (version === "NewTaipeiVer1")
-        data = await getNewTaipeiVer1;
+        data = await getNewTaipeiVer1();
 
     return new Promise((resolve, reject) => {
         try {
@@ -24,6 +24,7 @@ const getCloseStation = async (version, dist, currLat, currLng) => {
                 if (tempDist < dist)
                     retData.push(element);
             })
+            console.log("getCloseStation success");
             resolve(retData);
         }
         catch (err) {

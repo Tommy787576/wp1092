@@ -11,11 +11,13 @@ const getStationPos = (station, ver) => {
                 if (Object.keys(result).length === 0)
                     result = await findLatLng('NewTaipeiVer1', station);
 
+                console.log("getStationPos success");
                 resolve(result);
             }
             else if (ver === '2.0') {
                 result = await findLatLng('TaipeiVer2', station);
 
+                console.log("getStationPos success");
                 resolve(result);
             }
         }
@@ -33,13 +35,13 @@ const findLatLng = (version, station) => {
             let prefix = '';
 
             if (version === "TaipeiVer1")
-                data = await getTaipeiVer1;
+                data = await getTaipeiVer1();
             else if (version === "TaipeiVer2") {
-                data = await getTaipeiVer2;
+                data = await getTaipeiVer2();
                 prefix = 'YouBike2.0_';
             }
             else if (version === "NewTaipeiVer1")
-                data = await getNewTaipeiVer1;
+                data = await getNewTaipeiVer1();
 
             for (let i = 0; i < data.length; i++) {
                 if (data[i].sna === `${prefix}${station}`) {

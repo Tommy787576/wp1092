@@ -11,15 +11,19 @@ router.get('/getDistricts', async (req, res) => {
             await District.find({ version }, (err, docs) => {
                 if (err)
                     console.log(err);
-                else
+                else {
+                    console.log("getDistricts router success");
                     res.status(200).send(docs[0].districts);
+                }
             })
         }
-        else
+        else {
+            console.log("getDistricts router success");
             res.status(200).send(`${version} not found`);
+        }
     }
     catch (err) {
-        console.log("getDistricts error");
+        console.log("getDistricts router error");
         console.log(err);
         res.status(500).send({ error: err });
     }

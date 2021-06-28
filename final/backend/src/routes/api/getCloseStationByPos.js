@@ -13,10 +13,11 @@ router.get('/getCloseStationByPos', async (req, res) => {
         const { lat, lng, version } = pos;
         const data = await getCloseStation(version, dist, lat, lng);
 
+        console.log("getCloseStationByPos router success");
         res.status(200).send({ data, lat, lng });
     }
     catch (err) {
-        console.log("getCloseStationByPos error");
+        console.log("getCloseStationByPos router error");
         console.log(err);
         res.status(500).send({ error: err });
     }
