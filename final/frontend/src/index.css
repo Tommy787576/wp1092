@@ -1,0 +1,11 @@
+html, body, #root {
+    height: 100%
+}
+
+footer {
+    border-top: 1px solid rgb(206, 206, 206);
+    background-color: #fdfdfd;
+    text-align: center;
+    color: #888;
+    margin-top: 50px;
+}
