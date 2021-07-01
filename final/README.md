@@ -7,7 +7,10 @@
 $ cd final
 ```
 - server端
-1. 請先參考 backend 中的 .env.defaults 在 backend 下加入有 MONGO_URL 的 .env 檔案。
+1. 請先在 backend 目錄下創立一個 .env 檔案， .env 檔案的內容格式如下：
+```
+MONGO_URL=<你的MongoDB url>
+```
 2. 請讓其中一個terminal進到 backend 目錄底下，並且輸入 yarn install 指令安裝後端的 node_modules：
 ```
 $ cd backend
