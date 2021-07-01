@@ -1,5 +1,5 @@
 # EE 3035, Web Programming, 109-2
-## Final Project
+## Final Project: 大台北找YouBike
 ### 1. 如何在 localhost 安裝與測試之詳細步驟
 
 本專題和平常上課作業的開啟步驟基本相同，首先請開啟兩個terminal，並且讓他們都在 final 目錄底下：
